@@ -1,0 +1,28 @@
+{
+  "info": {
+    "inair": {
+      "address": 216,
+      "type": "|i2"
+    },
+    "lives": {
+      "address": 1846,
+      "type": "|i1"
+    },
+    "mario_x_pos": {
+      "address": 144,
+      "type": "<u2"
+    },
+    "mario_y_pos": {
+      "address": 162,
+      "type": "<u2"
+    },
+    "score": {
+      "address": 1813,
+      "type": ">u3"
+    },
+    "time": {
+      "address": 1800,
+      "type": ">u4"
+    }
+  }
+}
