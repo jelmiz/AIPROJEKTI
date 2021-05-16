@@ -63,8 +63,6 @@ def eval_genomes(genomes,config):
 
             if xpos == 0:
                 fitness_current += 255
-                print('xpos = 0',)
-                print(fitness_current)
                 xpos_max = 0
 
             if xpos > xpos_max and jump == 0:
@@ -81,7 +79,7 @@ def eval_genomes(genomes,config):
         
             if done or counter == 350 or lives == 3:
                 done = True
-                print(genome_id, fitness_current, xpos_max, xpos)
+                print(genome_id, fitness_current)
 
             genome.fitness = fitness_current
 
@@ -97,5 +95,5 @@ p.add_reporter(neat.Checkpointer(10))
 
 winner = p.run(eval_genomes)
 
-with open('winner.pkl', 'wb') as output:
-    pickle.dump(winner,output, 1)
+#with open('winner.pkl', 'wb') as output:
+   # pickle.dump(winner,output, 1)
