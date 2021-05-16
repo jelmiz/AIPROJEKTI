@@ -8,8 +8,14 @@
   },
   "reward": {
     "variables": {
+      "mario_x_pos": {
+        "reward": 1
+      },
+      "inair": {
+        "reward": 1
+      },
       "score": {
-        "reward": 1000.0
+        "reward": 1
       }
     }
   }

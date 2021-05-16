@@ -10,7 +10,7 @@
     },
     "mario_x_pos": {
       "address": 144,
-      "type": "<u2"
+      "type": "<u3"
     },
     "mario_y_pos": {
       "address": 162,

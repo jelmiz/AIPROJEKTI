@@ -38,7 +38,7 @@ def eval_genomes(genomes,config):
 
             ob = cv2.resize(ob, (inx, iny))
             ob = cv2.cvtColor(ob, cv2.COLOR_BGR2GRAY)
-            #ob = np.reshape(ob, (inx, iny))
+            ob = np.reshape(ob, (inx, iny))
 
             for x in ob:
                 for y in x:
@@ -52,24 +52,26 @@ def eval_genomes(genomes,config):
 
             xpos = info['mario_x_pos']
             jump = info['inair']
+            lives = info['lives']
 
             if jump == 1 and hyppy == True:
-                fitness_current += 1
+                fitness_current += rew * 2
                 hyppy = False
 
+            if xpos > 130:
+                fitness_current += rew * 2
+
             if xpos == 0:
+                fitness_current += 255
+                print('xpos = 0',)
+                print(fitness_current)
                 xpos_max = 0
-                fitness_current += 33500
 
-
-            if xpos > xpos_max:
-                fitness_current += 2
+            if xpos > xpos_max and jump == 0:
+                fitness_current += rew
                 xpos_max = xpos
                 hyppy = True
             
-            if xpos_max == xpos_end:
-                fitness_current += 100000
-                done = True
 
             if fitness_current > current_max_fitness:
                 current_max_fitness = fitness_current
@@ -77,7 +79,7 @@ def eval_genomes(genomes,config):
             else:
                 counter += 1
         
-            if done or counter == 200:
+            if done or counter == 350 or lives == 3:
                 done = True
                 print(genome_id, fitness_current, xpos_max, xpos)
 
