@@ -25,9 +25,9 @@ def eval_genomes(genomes,config):
         frame = 0
         counter = 0
         xpos = 0
+        ypos = 0
         jump = 0
         xpos_max = 0
-        xpos_end = 1500
         hyppy = True
         done = False
 
@@ -53,10 +53,14 @@ def eval_genomes(genomes,config):
             xpos = info['mario_x_pos']
             jump = info['inair']
             lives = info['lives']
-
+            ypos = info['mario_y_pos']
+            
             if jump == 1 and hyppy == True:
                 fitness_current += rew * 2
                 hyppy = False
+
+            if ypos < 128:
+                fitness_current += rew
 
             if xpos > 130:
                 fitness_current += rew * 2
@@ -96,4 +100,5 @@ p.add_reporter(neat.Checkpointer(10))
 winner = p.run(eval_genomes)
 
 #with open('winner.pkl', 'wb') as output:
-   # pickle.dump(winner,output, 1)
+    #pickle.dump(winner,output, 1)
+

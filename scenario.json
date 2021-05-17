@@ -11,6 +11,9 @@
       "mario_x_pos": {
         "reward": 1
       },
+      "mario_y_pos": {
+        "reward": 1
+      },
       "inair": {
         "reward": 1
       },
